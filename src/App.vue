@@ -1,30 +1,36 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">Sitio Web</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"> <router-link class="nav-link" to="/"><i class="fas fa-home"></i> Home</router-link> </li>
+                    <li class="nav-item active"> <router-link class="nav-link" to="/login"><i class="fas fa-user"></i> Login</router-link> </li>
+                    <li class="nav-item active"> <router-link class="nav-link" to="/close" @click="logout()"><i class="fas fa-power-off"></i> Close</router-link> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <router-view/>
 </template>
 
+<script>
+import ServiceUser from './services/user.service'
+export default {
+    methods: {
+        logout(){
+            ServiceUser.deleteUserLogged()
+            this.$router.push('/login')
+        }
+    }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+    body{
+        background: #f5f5f5;
+    }
 </style>

@@ -1,16 +1,16 @@
 <template>
     <div> 
         <h1>Home User</h1>
-        <ComponentHome/>
+        <ComponentAdmin/>
     </div>
 </template>
 
 <script>
-import ComponentHome from '@/components/HomeComponent.vue'
+import ComponentAdmin from '@/components/AdminComponent.vue'
 export default {
     name: 'HomeComponent',
     components: {
-        ComponentHome
+        ComponentAdmin
     }
 }
 </script>
